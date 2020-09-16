@@ -1,0 +1,138 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - 2053-7</title>
+  
+  
+  
+  
+<style>
+body {
+ background-image: url("https://resize.hswstatic.com/u_0/w_480/gif/frog-1.jpg");
+ background-repeat:no-repeat
+ background-color: #cccccc;
+ color: rgb(75, 0, 139)
+   
+}
+.correct{
+  background: green;
+}
+.incorrect{
+  background: red;
+}
+#q1{
+  position:absolute;
+  left:17%;
+  top:20%;
+}
+</style>
+
+  
+  
+  
+  
+
+</head>
+
+<body translate="no" >
+  <h1>Finn's Math Quiz</h1>
+<body>
+    <div>quiz ends in <span id="time"></span> minutes!</div>
+</body>
+<img
+     src="https://i.ytimg.com/vi/Q5jOMTjTNM0/maxresdefault.jpg"alt="chicken with pants" width="400"/>
+<ol>
+  <li> 1 + 1 = <input data-correct="2"/></li>
+  <li> 8 - 4 = <input data-correct="4"/></li>
+  <li> 145 * 11 = <input data-correct="1595"/></li>
+  <li> what is the square root of pi? round to 2 digits <input data-correct="1.77"/></li>
+  <li> 9 + 10 = <input data-correct="21"/></li>
+  <li> How do you measure a moving objects speed at any given moment in time?<input data-correct="you can't lol welcome to calculus"/></li>
+   <li> How do you find the derivative of a polynomial-based function? <input data-correct="idk"/></li>
+  <li> No calculator. Find all intercepts of y = x^2 -8x + 12  <input data-correct="12, 6, 2"/></li>
+   <li> What is the highest digit of pi calculated to so far?  <input data-correct="31.4 trillion digits"/></li>
+   <li> Find all roots of x*2y^7-pi^8<input data-correct="yeah"/></li>
+   <li> How many titles are there in the Call of Duty franchise? <input data-correct="24"/></li>
+  
+</ol>
+
+<button id="good_job">Good Job</button>
+<input id="q1" data-correct="chicken"/>
+
+<audio controls>
+  <source
+src="https://seattleacademy.github.io/2052-7/good_job.m4a"
+        type="audio/mpeg">
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  
+      <script id="rendered-js" >
+console.clear()
+
+$("input").change(onChange);
+
+function onChange(evt){
+  console.log(evt);
+  let correct = $(this).data("correct");
+  let response = $(this).val();
+  console.log(correct);
+  if(correct == response){
+    $(this).removeClass('incorrect').addClass('correct');
+  } else {
+    $(this).removeClass('correct').addClass('incorrect');
+  }
+}
+
+let good_job = document.getElementById("good_job_snd")
+
+function playGoodJob(){
+  good_job.play();
+}
+
+$("#good_job").click(playGoodJob)
+
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
